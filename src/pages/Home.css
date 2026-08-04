@@ -643,7 +643,7 @@
   height: clamp(480px, 58vh, 580px);
   aspect-ratio: 0.95 / 1;
   object-fit: cover;
-  object-position: 78% 20%;
+  object-position: 58% 20%;
 }
 .hprophet__plate {
   position: absolute;
@@ -1188,6 +1188,10 @@
     justify-content: center;
   }
   .hprophet__frame { margin: 0 auto; }
+  /* the fixed height clamp fights aspect-ratio once the frame is narrower
+     than it is tall, cropping much more width than on desktop and pushing
+     the subject to the edge — let aspect-ratio alone govern height here */
+  .hprophet__frame img { height: auto; }
 }
 @media (max-width: 860px) {
   .chero__word { font-size: clamp(52px, 13.8vw, 122px); }
