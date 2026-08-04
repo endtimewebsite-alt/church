@@ -217,6 +217,15 @@ p { margin: 0 0 18px; }
   padding: 80px 0;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+  .section {
+    padding: 56px 0;
+  }
+}
+
 /* Light grounds carry stone materiality — marble veining, warm raking light and
    a soft edge vignette, so an ivory hall never reads as flat colour. */
 .section::before,

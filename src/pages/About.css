@@ -160,7 +160,14 @@
   .about-split {
     grid-template-columns: 1fr;
   }
-  .about-split--reverse .about-split__figure {
+  .about-split__figure-wrapper {
+    position: relative;
+    top: 0;
+  }
+  .about-split--reverse .about-split__figure-wrapper {
+    order: 0;
+  }
+  .about-split--reverse .about-split__body {
     order: 0;
   }
   .about-stats {
@@ -172,6 +179,11 @@
   }
   .pillars-grid {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .about-founder-paper .founder-image-card {
+    padding: 16px 16px 0 16px;
   }
 }
 

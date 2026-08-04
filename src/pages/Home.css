@@ -430,13 +430,49 @@
 }
 @media (max-width: 700px) {
   .chero__figure { display: none; }
-  .chero__subjects li { font-size: 10.5px; letter-spacing: 0.1em; }
-  .chero__stat-num { font-size: 18px; }
-  /* Two figures only — four sets of digits with no labels says nothing, and
-     four with labels will not fit. Keep the two that carry the story. */
-  .chero__stat:nth-child(1),
-  .chero__stat:nth-child(3) { display: none; }
-  .chero__ledger-row { gap: 26px; }
+  /* the flex row of 4 stat-blocks doesn't fit a phone width — fold it into
+     the same 2x2 grid pattern .hglobal__stats already uses below */
+  .chero__ledger-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    padding: 22px 18px;
+    row-gap: 20px;
+    column-gap: 8px;
+  }
+  .chero__stat-divider { display: none; }
+  .chero__stat-block:nth-child(1) {
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0 0 16px;
+  }
+  .chero__stat-block:nth-child(3) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0 0 16px;
+  }
+  .chero__stat-block:nth-child(5) {
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .chero__stat-val { font-size: 24px; }
+
+  /* the 2x2 ledger no longer fits the leftover space below a fixed 100vh
+     hero — let the hero grow with its content instead of viewport-locking,
+     and let the ledger sit in normal flow rather than pinned to the bottom */
+  .chero {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 96px 0 40px;
+  }
+  .chero__ledger {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 44px;
+  }
 }
 
 /* The fixed Ambience toggle lives in the bottom-left corner, exactly where the
@@ -447,6 +483,11 @@
 }
 @media (max-width: 700px) {
   .chero__ledger-row { padding-left: 88px; }
+}
+/* on Home the Ambience toggle is hidden (.home .ambience), so the grid ledger
+   doesn't need the clearance above — keep it symmetric */
+@media (max-width: 700px) {
+  .home .chero__ledger-row { padding-left: 18px; }
 }
 
 /* silent scroll cue — a single thread of light */
@@ -1128,12 +1169,35 @@
 @media (max-width: 860px) {
   .hprophet__grid,
   .hglobal__grid { grid-template-columns: 1fr; gap: 48px; }
-  .hprophet__figure { order: -1; max-width: 460px; margin: 0 auto; }
+  .hprophet__figure { 
+    order: -1; 
+    width: 100%;
+    max-width: 360px; 
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+  }
+  .hprophet__frame { margin: 0 auto; }
 }
 @media (max-width: 860px) {
   .chero__word { font-size: clamp(52px, 13.8vw, 122px); }
-  .chero__word--2 { margin-left: 0.85em; }
+  .chero__word--2 { 
+    margin-left: 0; 
+    justify-content: center; 
+    gap: 6px; 
+  }
   .chero__fore { display: none; }
+  .chero__features { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+  }
+  .chero__feature { align-items: flex-start; text-align: left; flex-direction: row; }
+  .chero__feature:not(:last-child) { border-right: none; padding-right: 0; }
+  
+  .chero__actions { flex-direction: column; width: 100%; gap: 12px; }
+  .chero__actions .btn { width: 100%; justify-content: center; padding: 14px 20px; }
+  .chero__prophet-card.inline { display: none; }
 }
 @media (max-width: 680px) {
   .hconference__meta-grid {
@@ -1145,11 +1209,12 @@
   }
 }
 @media (max-width: 560px) {
-  .chero__word { font-size: clamp(38px, 12.4vw, 76px); }
-  .chero__word--2 { margin-left: 0.4em; }
+  .chero__word { font-size: clamp(38px, 10vw, 76px); }
+  .chero__word--2 { gap: 4px; }
   .htest__plaque { flex-basis: 78vw; width: 78vw; }
   .hglobal__gallery { grid-template-columns: 1fr 1fr; }
   .hglobal__stats { grid-template-columns: 1fr 1fr; }
+  .hprophet__plate { width: calc(100% - 32px); padding: 12px 0; text-align: center; font-size: 10px; }
 }
 
 /* ═══════════════ GIVING / PAYMENT ═══════════════ */
@@ -1193,5 +1258,10 @@
 
 @media (max-width: 860px) {
   .hgiving__grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 640px) {
+  .hgiving__card {
+    padding: 24px 20px;
+  }
 }
 

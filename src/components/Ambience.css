@@ -53,9 +53,8 @@
   50% { height: 13px; }
 }
 
-@media (max-width: 560px) {
-  .ambience { bottom: 18px; left: 18px; padding: 9px 13px; }
-  .ambience__label { display: none; }
+@media (max-width: 768px) {
+  .ambience { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

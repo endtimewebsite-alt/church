@@ -1,6 +1,6 @@
 import founderImg from '../assets/images/site/about-founder.jpg'
 import pastorsImg from '../assets/images/site/equipping-pastors.jpg'
-import familyImg from '../WhatsApp Image 2026-07-23 at 16.45.36.jpeg'
+import familyImg from '../assets/images/site/family.jpeg'
 import { Helmet } from 'react-helmet-async'
 import { aboutUs, site, stats } from '../data/siteContent'
 import Reveal from '../components/motion/Reveal'
