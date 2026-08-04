@@ -40,7 +40,7 @@ function About() {
             <div className="founder-image-card">
               <Ambient rays dust sparkles tone="dark" />
               <Reveal variant="veil" className="about-split__figure">
-                <img src={founderImg} alt="Prophet Daniel Bennet" />
+                <img src={founderImg} alt="Prophet Daniel Bennet" width="1030" height="1492" />
               </Reveal>
             </div>
           </div>
@@ -59,7 +59,7 @@ function About() {
         <div className="container about-split about-split--reverse" style={{ position: 'relative', zIndex: 10 }}>
           <div className="about-split__figure-wrapper">
             <Reveal variant="veil" className="about-split__figure">
-              <img src={familyImg} alt="Prophet Daniel Bennet and family" />
+              <img src={familyImg} alt="Prophet Daniel Bennet and family" width="4160" height="2773" />
             </Reveal>
           </div>
           <Reveal delay={0.1} className="about-split__body">
@@ -76,7 +76,7 @@ function About() {
         <div className="container about-split">
           <div className="about-split__figure-wrapper">
             <Reveal variant="veil" className="about-split__figure">
-              <img src={pastorsImg} alt="Equipping emerging pastors" />
+              <img src={pastorsImg} alt="Equipping emerging pastors" width="300" height="300" />
             </Reveal>
           </div>
           <Reveal delay={0.1} className="about-split__body">
