@@ -841,6 +841,16 @@
   display: block;
   border-radius: 50px !important;
 }
+/* the conference poster is a text flyer, not a photograph — cover-cropping it
+   to 3:4 sliced its header/QR/footer off at random, which read as a broken
+   tile. Show the whole thing, letterboxed, like .hconference__poster-img does. */
+.hglobal__img--poster {
+  background: #0a0a0b;
+}
+.hglobal__img--poster img {
+  object-fit: contain;
+  padding: 10px;
+}
 
 /* ═══════════════ THE MINISTRIES — THE HALLS ═══════════════ */
 /* The hall itself lives in Colonnade.css — it is full-bleed and pinned, so

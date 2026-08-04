@@ -131,7 +131,7 @@ function Home() {
             <div className="hglobal__gallery">
               <div className="hglobal__col">
                 <FlyImage className="hglobal__img" src={internationalImg} alt="International crusade" from="right" speed={62} />
-                <FlyImage className="hglobal__img" src={conferencePosterImg} alt="Prophetic Misphacha Conference" from="right" speed={30} depth={0.85} />
+                <FlyImage className="hglobal__img hglobal__img--poster" src={conferencePosterImg} alt="Prophetic Misphacha Conference" from="right" speed={30} depth={0.85} />
               </div>
               <div className="hglobal__col hglobal__col--low">
                 <FlyImage className="hglobal__img" src={outreachImg} alt="Outreach ministry" from="right" speed={-32} depth={0.8} />

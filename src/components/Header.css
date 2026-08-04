@@ -130,6 +130,7 @@
 
 /* Mobile drawer */
 .site-nav-mobile {
+  pointer-events: auto;
   overflow: hidden;
   max-width: 1320px;
   margin: 8px auto 0;
