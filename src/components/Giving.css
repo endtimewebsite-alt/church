@@ -1,0 +1,223 @@
+/* ============ GIVING — three panels of transfer details ============ */
+.give-container {
+  position: relative;
+  z-index: 10;
+}
+
+.give-head {
+  margin-bottom: 64px;
+  position: relative;
+}
+.give-head__portrait {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(155deg, var(--gold-light), var(--gold) 55%, rgba(var(--accent-rgb), 0.6));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+}
+.give-head__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 2px solid rgba(10, 8, 4, 0.65);
+}
+.give-head__title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 92px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-top: 20px;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+.give-head__title-em {
+  font-style: italic;
+  color: var(--gold);
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+}
+.give-head__lede {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 720px;
+  margin: 32px auto 0;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.give-head__lede em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+/* ---- the grid: two account panels + the digital column ---- */
+.give-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.give-card {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px;
+}
+.give-card__eyebrow { margin-bottom: 14px; }
+.give-card__title {
+  color: var(--white);
+  font-size: 27px;
+  margin: 0 0 8px;
+}
+.give-card__note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  min-height: 44px;
+}
+
+.give-card__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ---- a single label/value row ---- */
+.give-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.give-row:last-child { border-bottom: 0; }
+.give-row--wide {
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.give-row__label {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* the value is a button so it can be tapped to copy; it must not look like one */
+.give-row__value {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  transition: color var(--dur) var(--ease);
+}
+.give-row__value:hover { color: var(--gold-light); }
+.give-row__value:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.give-row__value.is-feature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+}
+.give-row__value.is-highlight {
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  font-variant-numeric: tabular-nums;
+}
+.give-row__value.is-mono {
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.give-row__copy {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.28);
+  transition: color var(--dur) var(--ease);
+  flex: none;
+}
+.give-row__value:hover .give-row__copy { color: var(--gold-light); }
+.give-row__copy.is-copied { color: #4ac97e; }
+
+/* ---- the digital column ---- */
+.give-card--digital { align-items: center; text-align: center; }
+.give-card--digital .give-card__note { max-width: 260px; }
+.give-qr {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  margin-bottom: 26px;
+}
+.give-qr img {
+  display: block;
+  width: 200px;
+  height: auto;
+  border-radius: 4px;
+}
+.give-card__rows--digital {
+  width: 100%;
+  align-items: center;
+}
+.give-card--digital .give-row--wide {
+  justify-items: center;
+  text-align: center;
+}
+.give-card--digital .give-row__value.is-highlight { font-size: 24px; }
+
+.give-footnote {
+  margin: 40px auto 0;
+  max-width: 620px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1080px) {
+  .give-grid { grid-template-columns: 1fr 1fr; }
+  /* the QR column reads better full-width once it is alone on its row */
+  .give-card--digital { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .give-grid { grid-template-columns: 1fr; gap: 22px; }
+  .give-head { margin-bottom: 44px; }
+  .give-head__portrait { width: 92px; height: 92px; margin-bottom: 16px; }
+  .give-card { padding: 26px 20px; }
+  .give-card__note { min-height: 0; margin-bottom: 22px; }
+  .give-row { grid-template-columns: 86px 1fr; gap: 10px; }
+  .give-row__label { font-size: 9px; letter-spacing: 0.12em; }
+  .give-row__value { font-size: 13.5px; }
+  .give-row__value.is-feature { font-size: 18px; }
+  .give-row__value.is-highlight { font-size: 17px; }
+  .give-qr img { width: 168px; }
+}
