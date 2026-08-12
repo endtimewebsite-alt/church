@@ -1,48 +1,49 @@
-import { useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
-import { galleryImages } from '../data/gallery'
-import { Stagger, StaggerItem } from '../components/motion/Stagger'
+import { useCallback, useMemo, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { categories, galleryImages } from '../data/gallery'
 import Reveal from '../components/motion/Reveal'
 import Ornament from '../components/motion/Ornament'
 import HeroLogo from '../components/HeroLogo'
+import Lightbox from '../components/Lightbox'
 import './Gallery.css'
 
+const ALL = 'all'
+
 function Gallery() {
+  const [filter, setFilter] = useState(ALL)
   const [index, setIndex] = useState(null)
-  const reduce = useReducedMotion()
+
+  // the visible set — the lightbox indexes into this, so arrow keys walk the
+  // category the visitor is actually looking at rather than all 130 frames
+  const photos = useMemo(
+    () => (filter === ALL ? galleryImages : categories.find((c) => c.id === filter)?.photos || []),
+    [filter],
+  )
+  const active = categories.find((c) => c.id === filter)
+
   const open = index !== null
-  const current = open ? galleryImages[index] : null
 
   const close = useCallback(() => setIndex(null), [])
   const next = useCallback(
-    () => setIndex((i) => (i === null ? i : (i + 1) % galleryImages.length)),
-    [],
+    () => setIndex((i) => (i === null ? i : (i + 1) % photos.length)),
+    [photos.length],
   )
   const prev = useCallback(
-    () => setIndex((i) => (i === null ? i : (i - 1 + galleryImages.length) % galleryImages.length)),
-    [],
+    () => setIndex((i) => (i === null ? i : (i - 1 + photos.length) % photos.length)),
+    [photos.length],
   )
 
-  useEffect(() => {
-    if (!open) return
-    function onKey(e) {
-      if (e.key === 'Escape') close()
-      else if (e.key === 'ArrowRight') next()
-      else if (e.key === 'ArrowLeft') prev()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, close, next, prev])
+  function chooseFilter(id) {
+    setFilter(id)
+    setIndex(null)
+  }
 
   return (
     <>
-      <Helmet>
-        <title>Gallery | End Time Prophetic Ministries</title>
-        <meta name="description" content="View moments of worship, healing, and ministry at End Time Prophetic Ministries." />
-        <meta property="og:title" content="Gallery | End Time Prophetic Ministries" />
-        <meta property="og:description" content="View moments of worship, healing, and ministry at End Time Prophetic Ministries." />
-      </Helmet>
+      <title>Gallery | End Time Prophetic Ministries</title>
+      <meta name="description" content="Photographs from the meetings, crusades and conferences of End Time Prophetic Ministries." />
+      <meta property="og:title" content="Gallery | End Time Prophetic Ministries" />
+      <meta property="og:description" content="Photographs from the meetings, crusades and conferences of End Time Prophetic Ministries." />
 
       <section className="page-hero">
         <HeroLogo />
@@ -58,23 +59,50 @@ function Gallery() {
 
       <section className="gal-hall">
         <div className="gal-hall__inner">
+          {/* ── the categories ── */}
+          <nav className="gal-filters" aria-label="Photograph categories">
+            <button
+              type="button"
+              className={`gal-filter ${filter === ALL ? 'is-active' : ''}`}
+              onClick={() => chooseFilter(ALL)}
+            >
+              <span>All</span>
+              <em>{galleryImages.length}</em>
+            </button>
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                className={`gal-filter ${filter === c.id ? 'is-active' : ''}`}
+                onClick={() => chooseFilter(c.id)}
+              >
+                <span>{c.label}</span>
+                <em>{c.photos.length}</em>
+              </button>
+            ))}
+          </nav>
+
           <div className="gal-ledger">
-            <span>The Wall</span>
+            <span>{active ? active.label : 'The Wall'}</span>
             <span className="gal-ledger__rule" aria-hidden="true" />
             <span className="gal-ledger__count">
-              {String(galleryImages.length).padStart(2, '0')} Photographs
+              {String(photos.length).padStart(2, '0')} Photographs
             </span>
           </div>
 
-          <Stagger className="gal-wall">
-            {galleryImages.map((img, i) => (
-              <StaggerItem key={img.id} className="gal-cell">
+          {active?.blurb && <p className="gal-blurb">{active.blurb}</p>}
+
+          {/* keyed on the filter so switching categories re-runs the entrance
+              and React does not try to reuse tiles across two different sets */}
+          <div className="gal-wall" key={filter}>
+            {photos.map((img, i) => (
+              <div className="gal-cell" key={img.id}>
                 <button
                   className="gal-frame"
                   onClick={() => setIndex(i)}
-                  aria-label={`Open photograph ${i + 1} of ${galleryImages.length}`}
+                  aria-label={`Open photograph ${i + 1} of ${photos.length}`}
                 >
-                  <img src={img.thumb} alt={`Ministry photograph ${i + 1}`} loading="lazy" />
+                  <img src={img.thumb} alt={img.alt} loading="lazy" decoding="async" />
                   <span className="gal-frame__wash" aria-hidden="true" />
                   <span className="gal-frame__index" aria-hidden="true">
                     {String(i + 1).padStart(2, '0')}
@@ -87,52 +115,21 @@ function Gallery() {
                     View
                   </span>
                 </button>
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            className="lightbox"
-            onClick={close}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <button className="lightbox__close" aria-label="Close" onClick={close}>&times;</button>
-            <button
-              className="lightbox__nav lightbox__nav--prev"
-              aria-label="Previous"
-              onClick={(e) => { e.stopPropagation(); prev() }}
-            >‹</button>
-
-            <motion.img
-              key={current.id}
-              src={current.full}
-              alt={`Ministry photo ${current.id}`}
-              onClick={(e) => e.stopPropagation()}
-              initial={reduce ? false : { opacity: 0, scale: 0.94 }}
-              animate={reduce ? undefined : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            />
-
-            <button
-              className="lightbox__nav lightbox__nav--next"
-              aria-label="Next"
-              onClick={(e) => { e.stopPropagation(); next() }}
-            >›</button>
-            <div className="lightbox__bar" onClick={(e) => e.stopPropagation()}>
-              <span><b>{String(index + 1).padStart(2, '0')}</b> / {String(galleryImages.length).padStart(2, '0')}</span>
-              <span className="lightbox__rail" aria-hidden="true">
-                <span style={{ width: `${((index + 1) / galleryImages.length) * 100}%` }} />
-              </span>
-              <span className="lightbox__hint">← → to move · Esc to close</span>
-            </div>
-          </motion.div>
+          <Lightbox
+            images={photos}
+            index={index}
+            onClose={close}
+            onNext={next}
+            onPrev={prev}
+          />
         )}
       </AnimatePresence>
     </>

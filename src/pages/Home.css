@@ -429,7 +429,56 @@
   .chero__stat-label { font-size: 8.5px; letter-spacing: 0.16em; }
 }
 @media (max-width: 700px) {
-  .chero__figure { display: none; }
+  /* The portrait with the Bible was hidden here — the one photograph that
+     tells a visitor who this ministry is, gone on the device most of them
+     arrive on.
+
+     On desktop it is an absolute cut-out standing in the right of the nave.
+     That composition has nowhere to go on a 390px screen: overlaid, the stats
+     ledger covers exactly the part of the frame the Bible is in. So on a phone
+     the figure leaves the absolute layer and takes its own band in the flow —
+     copy, then the messenger, then the ledger. `order` is what makes that
+     possible without touching the DOM, since .chero is already a flex column
+     here and every other layer is absolutely positioned out of the way. */
+  .chero__figure {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-end;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    z-index: 1;
+    order: 2;
+    margin-top: 16px;
+  }
+  .chero__figure img {
+    height: auto;
+    width: auto;
+    max-height: 42vh;
+    max-width: 68%;
+    object-position: bottom center;
+    filter: brightness(1.04) contrast(1.03) drop-shadow(0 18px 40px rgba(0, 0, 0, 0.6));
+    /* fade the base of the cut-out into the hero floor so it does not read as
+       a sticker pasted onto the photograph */
+    -webkit-mask-image: linear-gradient(180deg, #000 82%, rgba(0, 0, 0, 0.4) 94%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 82%, rgba(0, 0, 0, 0.4) 94%, transparent 100%);
+  }
+  .chero__inner { order: 1; z-index: 6; }
+  .chero__copy { position: relative; z-index: 6; }
+  .chero__ledger { order: 3; z-index: 7; }
+
+  /* an animated `filter: blur(22px)` plane is a per-frame re-raster; the phone
+     cannot afford it and at this width it is barely visible anyway */
+  .chero__fore { display: none; }
+  /* mix-blend-mode over the full hero forces the backdrop to re-composite —
+     a plain gradient grades it the same */
+  .chero__grade {
+    mix-blend-mode: normal;
+    background: linear-gradient(180deg, rgba(30, 12, 4, 0.28), rgba(8, 8, 9, 0.4));
+  }
+
   /* the flex row of 4 stat-blocks doesn't fit a phone width — fold it into
      the same 2x2 grid pattern .hglobal__stats already uses below */
   .chero__ledger-row {
@@ -464,14 +513,17 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 96px 0 40px;
+    /* the portrait now takes a band of its own in this column, so the generous
+       desktop breathing room above the title has to give some of it back */
+    padding: 84px 0 32px;
   }
+  .chero__copy { padding-top: 10px; }
   .chero__ledger {
     position: relative;
     left: auto;
     right: auto;
     bottom: auto;
-    margin-top: 44px;
+    margin-top: 30px;
   }
 }
 
@@ -589,7 +641,7 @@
   position: absolute;
   width: 120px;
   height: 120px;
-  background-image: url('../assets/images/site/corner-ornament.png');
+  background-image: url('../assets/images/site/corner-ornament.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.15;
@@ -621,7 +673,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: url('../assets/images/site/prophet-new-png.png') center / cover no-repeat;
+  background: url('../assets/images/site/prophet-new-png.jpg') center / cover no-repeat;
 }
 .hprophet__grid {
   display: grid;
@@ -1085,6 +1137,12 @@
   margin-top: 8px;
   text-transform: uppercase;
 }
+/* the clock, sitting between the scripture and the practical details */
+.hconference__countdown {
+  margin: 0 0 32px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
 .hconference__meta-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1231,51 +1289,6 @@
   .hprophet__plate { width: calc(100% - 32px); padding: 12px 0; text-align: center; font-size: 10px; }
 }
 
-/* ═══════════════ GIVING / PAYMENT ═══════════════ */
-.hgiving__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-top: 48px;
-  align-items: stretch;
-}
-.hgiving__card {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.hgiving__bank-box {
-  padding: 24px;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-.hgiving__qr-box {
-  align-items: center;
-  text-align: center;
-}
-.hgiving__qr-image-wrapper {
-  background: rgba(255, 255, 255, 1);
-  padding: 16px;
-  border-radius: 12px;
-  display: inline-block;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
-}
-.hgiving__qr-image {
-  width: 220px;
-  height: auto;
-  border-radius: 4px;
-  display: block;
-}
-
-@media (max-width: 860px) {
-  .hgiving__grid { grid-template-columns: 1fr; gap: 32px; }
-}
-@media (max-width: 640px) {
-  .hgiving__card {
-    padding: 24px 20px;
-  }
-}
+/* The giving block moved to <Giving /> (components/Giving.css) so Home and
+   Contact render one copy of the account details instead of two. */
 

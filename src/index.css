@@ -98,7 +98,29 @@ body {
   margin: 0;
   position: relative;
   /* Parchment background image — the golden-brown aged manuscript look */
-  background: var(--bg) url('./assets/images/site/parchment-bg.png') center / cover fixed;
+  background: var(--bg) url('./assets/images/site/parchment-bg.jpg') center / cover fixed;
+}
+
+/* `background-attachment: fixed` cannot be composited: the browser repaints the
+   whole parchment plate on every scroll frame, and on a phone GPU that alone is
+   enough to make the page feel like it is hanging. Mobile gets the same texture,
+   scrolled with the page. */
+@media (max-width: 900px), (pointer: coarse) {
+  body { background-attachment: scroll; }
+}
+
+/* screen-reader-only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 #root {

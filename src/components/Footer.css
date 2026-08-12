@@ -123,13 +123,27 @@
 }
 .site-footer a:hover { color: var(--gold-light); }
 
-.site-footer__social {
+/* the marks themselves are styled in SocialIcons.css — the footer only places them */
+.site-footer__social { margin-top: 26px; }
+
+.site-footer__address {
   display: flex;
-  gap: 22px;
-  margin-top: 26px;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 15px;
+  font-style: normal;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(202, 199, 194, 0.62);
+}
+/* the ministry's own name leads the block, so it carries the weight */
+.site-footer__address span:first-child {
+  color: rgba(232, 118, 58, 0.9);
   font-size: 11px;
-  letter-spacing: 0.22em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-bottom: 3px;
 }
 
 .site-footer__bottom {

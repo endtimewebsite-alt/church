@@ -1,0 +1,98 @@
+/* ============ SOCIAL MARKS ============
+   Gold hairline discs that fill with ember on hover. Sized in one place so the
+   footer, the contact card and the header all read as the same family. */
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.socials__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.socials__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--accent-light);
+  border: 1px solid rgba(var(--accent-rgb), 0.38);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+.socials__mark svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.socials__link:hover .socials__mark,
+.socials__link:focus-visible .socials__mark {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+.socials__link:focus-visible .socials__mark {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+/* WhatsApp keeps its own green on hover — it is the one mark people look for
+   by colour rather than by shape. */
+.socials__link--whatsapp:hover .socials__mark {
+  background: #25d366;
+  border-color: #25d366;
+}
+
+.socials__label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  transition: color var(--dur) var(--ease);
+}
+.socials__link:hover .socials__label { color: var(--accent-light); }
+
+/* ---- sizes ---- */
+.socials--sm .socials__mark { width: 34px; height: 34px; }
+.socials--sm .socials__mark svg { width: 15px; height: 15px; }
+.socials--lg .socials__mark { width: 52px; height: 52px; }
+.socials--lg .socials__mark svg { width: 22px; height: 22px; }
+
+/* labelled variant stacks into a column so the words have room to breathe */
+.socials--labelled {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+@media (max-width: 700px) {
+  .socials { gap: 10px; }
+  .socials--labelled {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .socials--labelled .socials__label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socials__link:hover .socials__mark { transform: none; }
+}

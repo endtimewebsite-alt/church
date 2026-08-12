@@ -4,13 +4,92 @@ export const site = {
   tagline: 'Raising Prophetic Voices for the End Time Revival',
   phone: '+91 93425 23393',
   email: 'etpm2020forchrist@gmail.com',
-  address: 'Chennai, Tamil Nadu, India',
+  // The ministry's postal address, as given by the client. `addressLines` is the
+  // display form (one line per row); `address` stays a single string for the
+  // places that need it inline (meta tags, one-line rows).
+  addressLines: ['END TIME PROPHETIC MINISTRIES', 'Porur', 'Chennai', 'Tamil Nadu, India'],
+  address: 'Porur, Chennai, Tamil Nadu, India',
   social: {
+    // TODO(client): replace with the exact URL of the "ETPM Chennai" Facebook page.
     facebook: 'https://www.facebook.com/p/End-Time-Prophetic-Ministries-100085716934064/',
     instagram: 'https://www.instagram.com/endtimepropheticministries/',
     youtube: 'https://www.youtube.com/@endtimepropheticministries6864',
+    whatsapp: 'https://wa.me/919342523393',
   },
 }
+
+/**
+ * Giving details, exactly as supplied by the ministry. Two panels, because the
+ * outside-India transfer needs the SWIFT and MICR codes that a domestic NEFT
+ * does not, and mixing them on one card is how people send money to the wrong
+ * rails. `rows` render in order; `wide` rows take the full width of the panel.
+ */
+export const giving = {
+  gpay: '7829882540',
+  accounts: [
+    {
+      id: 'india',
+      eyebrow: 'Within India',
+      title: 'Bank Transfer',
+      note: 'For NEFT, IMPS, RTGS and UPI transfers from an Indian bank account.',
+      rows: [
+        { label: 'Bank', value: 'State Bank of India', feature: true },
+        { label: 'Acc. Name', value: 'DANIEL BENNET', mono: true },
+        { label: 'Acc No.', value: '20190093101', highlight: true },
+        { label: 'IFSC Code', value: 'SBIN0005200', mono: true },
+        { label: 'Branch Code', value: '005200', mono: true },
+        { label: 'Branch', value: 'Porur, Chennai, Tamil Nadu, India', wide: true },
+      ],
+    },
+    {
+      id: 'international',
+      eyebrow: 'Outside India',
+      title: 'International Transfer',
+      note: 'For wire transfers from outside India — the SWIFT code is required.',
+      rows: [
+        { label: 'Bank', value: 'State Bank of India', feature: true },
+        { label: 'Acc. Name', value: 'DANIEL BENNET', mono: true },
+        { label: 'Acc No.', value: '20190093101', highlight: true },
+        { label: 'SWIFT Code', value: 'SBININBB292', highlight: true },
+        { label: 'MICR Code', value: '600002119', mono: true },
+        { label: 'IFSC Code', value: 'SBIN0005200', mono: true },
+        { label: 'Branch Code', value: '005200', mono: true },
+        { label: 'Branch', value: 'Porur, Chennai, Tamil Nadu, India', wide: true },
+      ],
+    },
+  ],
+}
+
+/**
+ * Dated events. `start`/`end` are ISO strings in IST (+05:30) so the countdown
+ * lands on the same moment for a visitor in Chennai and one in London.
+ * The countdown reads the first event whose `end` is still in the future.
+ */
+export const events = [
+  {
+    id: 'misphacha-2026',
+    title: 'Prophetic Misphacha Conference 2026',
+    theme: 'Rebuilding Christ-Centered Healthy Families & Restoring Marriages',
+    scripture: '“As for Me and My House, We Will Serve the Lord”',
+    scriptureRef: 'Joshua 24:15',
+    start: '2026-08-22T09:30:00+05:30',
+    end: '2026-08-22T13:00:00+05:30',
+    dateLabel: '22 August 2026 (Saturday)',
+    timeLabel: '9:30 AM – 1:00 PM',
+    registrationCloses: '2026-08-15T23:59:00+05:30',
+    registrationClosesLabel: '15 August 2026',
+    venue: 'STEVE’S GYM',
+    venueAddress: 'No. 10, Krishna Reddy, Henpur Bagalur Road, HBR 3rd Block, Bengaluru - 500043',
+    fee: '₹200/- per person',
+    seats: 'Limited Seats (30 Seats Only)',
+    sessions: [
+      { title: 'Rebuilding Christ-Centered Healthy Families', note: 'Newly married couples are welcome' },
+      { title: 'Forgiveness & Healing', note: 'in marriage' },
+      { title: 'Dealing with Modern Challenges', note: 'Technology, peer pressure, and cultural influences' },
+      { title: 'Restoring Love, Faith, & Unity', note: 'in marriage' },
+    ],
+  },
+]
 
 export const aboutUs = {
   founderTitle: "GOD'S VISION TO FOUNDER DANIEL BENNET",
@@ -103,5 +182,3 @@ export const testimonials = [
   { quote: 'The word of knowledge spoken over me was so specific only God could have known it. It rebuilt my trust in Him.', name: 'Priscilla D.', role: 'Kochi' },
   { quote: 'What began as one meeting became a complete turnaround for our church. Hunger for the presence of God spread through our whole congregation.', name: 'Pastor Thomas A.', role: 'Singapore' },
 ]
-
-export const galleryCount = 23

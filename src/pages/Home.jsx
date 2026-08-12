@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import CathedralHero from '../components/CathedralHero'
 import founderImg from '../assets/images/site/prophet-messenger.jpeg'
-import qrImage from '../assets/images/site/qr-code.jpg'
 import outreachImg from '../assets/images/site/outreach.jpg'
 import internationalImg from '../assets/images/site/international.jpg'
 import malaysiaImg from '../assets/images/site/malaysia-outreach.jpg'
-import brochureFlyerImg from '../assets/images/posters/WhatsApp Image 2026-07-23 at 16.51.15.jpeg'
 import conferencePosterImg from '../assets/images/posters/prophetic-misphacha-conference.jpg'
-import { site, aboutUs, ministries, stats, testimonials } from '../data/siteContent'
-import { galleryImages } from '../data/gallery'
+import { site, aboutUs, ministries, stats, testimonials, events } from '../data/siteContent'
+import { categories } from '../data/gallery'
 import Reveal from '../components/motion/Reveal'
 import Ambient from '../components/motion/Ambient'
 import Ornament from '../components/motion/Ornament'
@@ -23,12 +21,18 @@ import Colonnade from '../components/Colonnade'
 import GalleryTraverse from '../components/GalleryTraverse'
 import SectionHeading from '../components/SectionHeading'
 import Counter from '../components/Counter'
+import Countdown from '../components/Countdown'
+import Lightbox from '../components/Lightbox'
+import Giving from '../components/Giving'
 import Arrow from '../components/Arrow'
 import './Home.css'
 
 function Home() {
   const [posterOpen, setPosterOpen] = useState(false)
-  const previewImages = galleryImages.slice(0, 6)
+  // one frame from each category rather than the first six of one folder, so
+  // the preview strip shows the range of the ministry's work
+  const previewImages = categories.map((c) => c.photos[0]).filter(Boolean).slice(0, 6)
+  const nextEvent = events[0]
 
   // doubled so the track can loop seamlessly from -50% back to 0
   const witnessReel = [...testimonials, ...testimonials]
@@ -228,8 +232,12 @@ function Home() {
               {/* Conference Details */}
               <div className="hconference__info">
                 <div className="hconference__scripture">
-                  <span className="hconference__quote">“As for Me and My House, We Will Serve the Lord”</span>
-                  <span className="hconference__verse">— Joshua 24:15</span>
+                  <span className="hconference__quote">{nextEvent.scripture}</span>
+                  <span className="hconference__verse">— {nextEvent.scriptureRef}</span>
+                </div>
+
+                <div className="hconference__countdown">
+                  <Countdown target={nextEvent.start} label="Conference begins in" endedLabel="The conference has begun" />
                 </div>
 
                 <div className="hconference__meta-grid">
@@ -303,9 +311,14 @@ function Home() {
 
                 <div className="hconference__actions">
                   <Magnetic>
-                    <a href="tel:+919342523393" className="btn btn-primary">
-                      Call &amp; Register: +91 93425 23393 <Arrow />
+                    <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="btn btn-primary">
+                      Call &amp; Register: {site.phone} <Arrow />
                     </a>
+                  </Magnetic>
+                  <Magnetic>
+                    <Link to="/events" className="btn btn-outline">
+                      All Event Details <Arrow />
+                    </Link>
                   </Magnetic>
                   <button onClick={() => setPosterOpen(true)} className="btn btn-outline">
                     View Full Poster
@@ -319,25 +332,11 @@ function Home() {
         {/* Lightbox for Conference Poster */}
         <AnimatePresence>
           {posterOpen && (
-            <motion.div
-              className="lightbox"
-              onClick={() => setPosterOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              <button className="lightbox__close" aria-label="Close" onClick={() => setPosterOpen(false)}>&times;</button>
-              <motion.img
-                src={conferencePosterImg}
-                alt="Prophetic Misphacha Conference Poster"
-                onClick={(e) => e.stopPropagation()}
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                style={{ maxHeight: '88vh', borderRadius: '12px', border: '1px solid rgba(var(--accent-rgb), 0.5)' }}
-              />
-            </motion.div>
+            <Lightbox
+              src={conferencePosterImg}
+              alt="Prophetic Misphacha Conference poster"
+              onClose={() => setPosterOpen(false)}
+            />
           )}
         </AnimatePresence>
 
@@ -357,95 +356,7 @@ function Home() {
         </section>
 
         {/* ═══════════════ GIVING / PAYMENT ═══════════════ */}
-        <section className="section section-soft hgiving section-scripture-bg" data-chapter="IX" data-chapter-label="Giving">
-          <Ambient rays dust tone="gold" />
-          <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-            
-            {/* Custom Styled Heading */}
-            <div className="section-head" style={{ marginBottom: '72px', position: 'relative' }}>
-              <span className="eyebrow eyebrow--center"><em className="chapter">IX</em> Support the Ministry</span>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(44px, 7vw, 92px)', fontWeight: '400', letterSpacing: '0.03em', color: 'var(--white)', marginTop: '20px', textShadow: '0 10px 40px rgba(0,0,0,0.6)' }}>
-                PARTNER <span style={{ fontStyle: 'italic', color: 'var(--gold)', textTransform: 'lowercase', letterSpacing: '0.05em' }}>with us</span>
-              </h2>
-              <Ornament center />
-              <p style={{ 
-                fontFamily: 'var(--font-display)', 
-                fontSize: 'clamp(24px, 3vw, 32px)', 
-                color: 'rgba(255, 255, 255, 0.9)', 
-                maxWidth: '720px', 
-                margin: '36px auto 0', 
-                lineHeight: '1.3',
-                letterSpacing: '0.02em',
-                textShadow: '0 4px 20px rgba(0,0,0,0.4)' 
-              }}>
-                Your seed helps us take the <span style={{ fontStyle: 'italic', color: 'var(--gold-light)' }}>prophetic voice</span> across the nations.
-              </p>
-            </div>
-
-            <div className="hgiving__grid">
-              {/* Left Side: Account Details */}
-              <div className="card card--stone hgiving__card">
-                <span className="eyebrow" style={{ marginBottom: '12px' }}>Direct Transfer</span>
-                <h3 style={{ color: 'var(--white)', marginBottom: '8px', fontSize: '28px' }}>Bank Account</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', marginBottom: '40px', maxWidth: '340px' }}>
-                  For international or domestic wire transfers directly to the ministry.
-                </p>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  {/* Row: Bank */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '16px', alignItems: 'baseline', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
-                    <span style={{ color: 'var(--muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Bank</span>
-                    <span style={{ color: 'var(--gold-light)', fontSize: '20px', fontFamily: 'var(--font-display)', fontStyle: 'italic', letterSpacing: '0.02em' }}>State Bank of India</span>
-                  </div>
-                  
-                  {/* Row: Account Name */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '16px', alignItems: 'baseline', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
-                    <span style={{ color: 'var(--muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Acc Name</span>
-                    <span style={{ color: 'var(--white)', fontSize: '15px', fontWeight: '600', letterSpacing: '0.15em', textTransform: 'uppercase' }}>DANIEL BENNET</span>
-                  </div>
-
-                  {/* Row: Account No */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: '16px', alignItems: 'baseline', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
-                    <span style={{ color: 'var(--muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Acc No.</span>
-                    <span style={{ color: 'var(--gold)', fontSize: '20px', fontWeight: '500', letterSpacing: '0.1em' }}>20190093101</span>
-                  </div>
-
-                  {/* Grid: Codes & Branch */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', paddingTop: '12px' }}>
-                    <div>
-                      <span style={{ display: 'block', color: 'var(--muted)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '6px' }}>IFSC Code</span>
-                      <span style={{ color: 'var(--white)', fontSize: '14px', letterSpacing: '0.08em', fontWeight: '500' }}>SBIN0005200</span>
-                    </div>
-                    <div>
-                      <span style={{ display: 'block', color: 'var(--muted)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '6px' }}>Branch Code</span>
-                      <span style={{ color: 'var(--white)', fontSize: '14px', letterSpacing: '0.08em', fontWeight: '500' }}>005200</span>
-                    </div>
-                    <div>
-                      <span style={{ display: 'block', color: 'var(--muted)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '6px' }}>MICR Code</span>
-                      <span style={{ color: 'var(--white)', fontSize: '14px', letterSpacing: '0.08em', fontWeight: '500' }}>600002119</span>
-                    </div>
-                    <div>
-                      <span style={{ display: 'block', color: 'var(--muted)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '6px' }}>Branch</span>
-                      <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', lineHeight: '1.5', display: 'block' }}>Porur, Chennai<br/>Tamil Nadu, India</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side: QR Code */}
-              <div className="card card--stone hgiving__card hgiving__qr-box" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <span className="eyebrow" style={{ marginBottom: '12px' }}>Digital Giving</span>
-                <h3 style={{ color: 'var(--white)', marginBottom: '8px', fontSize: '28px' }}>Scan to Give</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', marginBottom: '40px', maxWidth: '280px' }}>
-                  Use any UPI or mobile payment app to scan and give instantly.
-                </p>
-                <div className="hgiving__qr-image-wrapper">
-                  <img src={qrImage} alt="Scan to Give" className="hgiving__qr-image" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Giving chapter="IX" />
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { site } from '../data/siteContent'
 import Reveal from './motion/Reveal'
 import Ornament from './motion/Ornament'
+import SocialIcons from './SocialIcons'
 import './Footer.css'
 
 function Footer() {
@@ -41,11 +42,7 @@ function Footer() {
           <div className="site-footer__brand">
             <span className="site-footer__name">{site.name}</span>
             <p>{site.tagline}</p>
-            <div className="site-footer__social">
-              <a href={site.social.facebook} target="_blank" rel="noreferrer">Facebook</a>
-              <a href={site.social.instagram} target="_blank" rel="noreferrer">Instagram</a>
-              <a href={site.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
-            </div>
+            <SocialIcons size="md" className="site-footer__social" />
           </div>
 
           <div>
@@ -53,6 +50,7 @@ function Footer() {
             <nav className="site-footer__links">
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
+              <Link to="/events">Events</Link>
               <Link to="/gallery">Gallery</Link>
               <Link to="/invite">Invite the Prophet</Link>
               <Link to="/contact">Contact</Link>
@@ -64,8 +62,12 @@ function Footer() {
             <div className="site-footer__links">
               <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
               <a href={`mailto:${site.email}`}>{site.email}</a>
-              <span>{site.address}</span>
             </div>
+            <address className="site-footer__address">
+              {site.addressLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </address>
           </div>
         </div>
       </div>

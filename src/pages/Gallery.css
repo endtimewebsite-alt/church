@@ -33,6 +33,92 @@
 
 .gal-hall__inner { max-width: 1600px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
 
+/* ---------- the category rail ---------- */
+.gal-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(28px, 3.4vw, 44px);
+}
+.gal-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+.gal-filter:hover {
+  color: #fff;
+  border-color: rgba(var(--accent-rgb), 0.6);
+}
+.gal-filter.is-active {
+  color: #fff;
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.22);
+}
+.gal-filter:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+/* the tally rides in a dimmer pill so it never competes with the name */
+.gal-filter em {
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--accent-light);
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-variant-numeric: tabular-nums;
+}
+.gal-filter.is-active em { color: #fff; background: rgba(0, 0, 0, 0.3); }
+
+.gal-blurb {
+  max-width: 720px;
+  margin: -22px 0 clamp(28px, 3.4vw, 44px);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Eight categories wrap to eight rows on a phone and push the photographs
+   most of a screen down. Turn the rail into one swipeable line instead. */
+@media (max-width: 760px) {
+  .gal-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* bleed to the edges so the row reads as scrollable, not clipped */
+    margin-left: calc(-1 * clamp(20px, 4vw, 60px));
+    margin-right: calc(-1 * clamp(20px, 4vw, 60px));
+    padding: 0 clamp(20px, 4vw, 60px) 4px;
+  }
+  .gal-filters::-webkit-scrollbar { display: none; }
+  .gal-filter {
+    flex: none;
+    scroll-snap-align: start;
+    padding: 10px 15px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .gal-blurb { font-size: 14px; }
+}
+
 /* ---------- the ledger line above the wall ---------- */
 .gal-ledger {
   display: flex;
@@ -155,82 +241,8 @@
 .gal-frame:hover .gal-frame__index,
 .gal-frame:focus-visible .gal-frame__index { color: var(--accent-light); }
 
-/* ---------- Lightbox ---------- */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 5, 6, 0.94);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 300;
-  padding: clamp(16px, 5vh, 64px);
-}
-.lightbox img {
-  max-width: min(1100px, 88vw);
-  max-height: 80vh;
-  border: 1px solid rgba(var(--accent-rgb), 0.45);
-  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8);
-}
-
-.lightbox__close {
-  position: absolute;
-  top: 22px;
-  right: 28px;
-  width: 46px;
-  height: 46px;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #fff;
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-.lightbox__close:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.18); }
-
-.lightbox__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 54px;
-  height: 54px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
-  font-size: 30px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.lightbox__nav:hover { background: rgba(var(--accent-rgb), 0.22); border-color: var(--accent); }
-.lightbox__nav--prev { left: clamp(10px, 3vw, 40px); }
-.lightbox__nav--next { right: clamp(10px, 3vw, 40px); }
-
-.lightbox__bar {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(18px, 4vh, 40px);
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
-}
-.lightbox__bar b { color: var(--accent-light); font-weight: 700; }
-.lightbox__rail { display: block; width: clamp(80px, 14vw, 190px); height: 1px; background: rgba(255, 255, 255, 0.2); }
-.lightbox__rail span { display: block; height: 100%; background: var(--accent); transition: width 0.35s var(--ease); }
-.lightbox__hint { color: rgba(255, 255, 255, 0.34); letter-spacing: 0.2em; }
+/* The lightbox moved to components/Lightbox.css — the gallery, the events
+   page and the home poster all share it now. */
 
 @media (max-width: 900px) {
   .gal-wall { grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -238,7 +250,6 @@
 }
 @media (max-width: 600px) {
   .gal-wall { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .lightbox__hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gal-frame, .gal-frame img, .gal-frame__wash, .gal-frame__view { transition: none; }

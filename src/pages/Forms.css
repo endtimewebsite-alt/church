@@ -56,10 +56,15 @@
   padding: clamp(48px, 6vw, 88px) 0 clamp(90px, 11vw, 150px);
   background:
     linear-gradient(180deg, rgba(240, 226, 205, 0.78), rgba(218, 200, 175, 0.88)),
-    url('../assets/images/site/parchment-bg.png') center / cover fixed no-repeat;
+    url('../assets/images/site/parchment-bg.jpg') center / cover fixed no-repeat;
   border-top: 1px solid rgba(184, 134, 11, 0.5);
   border-radius: 50% 50% 0 0 / 70px 70px 0 0;
   box-shadow: 0 -40px 90px -50px rgba(12, 12, 14, 0.5);
+}
+/* see index.css — a fixed attachment repaints this whole plate every scroll
+   frame, which is what made the phone feel like it was hanging */
+@media (max-width: 900px), (pointer: coarse) {
+  .fpanel { background-attachment: scroll, scroll; }
 }
 .fpanel__intro {
   text-align: center;
@@ -107,12 +112,22 @@
   font-size: 17px;
 }
 .contact-info a:hover { color: #8A3B08; }
-.contact-info__social {
+.contact-info__address {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  flex-direction: column;
+  gap: 2px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #2C1E12;
+}
+.contact-info__address span:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A3B08;
+  margin-bottom: 4px;
 }
 
 /* ---- Form ---- */

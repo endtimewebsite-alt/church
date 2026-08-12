@@ -1,0 +1,93 @@
+/* ============ LIGHTBOX ============
+   Moved out of Gallery.css: the gallery, the events page and the home poster
+   all open this, and page-scoped CSS meant the styles only happened to be
+   loaded because Gallery had been visited. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 6, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: clamp(16px, 5vh, 64px);
+}
+.lightbox img {
+  max-width: min(1100px, 88vw);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.lightbox__close:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.18); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.lightbox__nav:hover { background: rgba(var(--accent-rgb), 0.22); border-color: var(--accent); }
+.lightbox__nav--prev { left: clamp(10px, 3vw, 40px); }
+.lightbox__nav--next { right: clamp(10px, 3vw, 40px); }
+
+.lightbox__bar {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(18px, 4vh, 40px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+.lightbox__bar b { color: var(--accent-light); font-weight: 700; }
+.lightbox__rail { display: block; width: clamp(80px, 14vw, 190px); height: 1px; background: rgba(255, 255, 255, 0.2); }
+.lightbox__rail span { display: block; height: 100%; background: var(--accent); transition: width 0.35s var(--ease); }
+.lightbox__hint { color: rgba(255, 255, 255, 0.34); letter-spacing: 0.2em; }
+
+@media (max-width: 700px) {
+  /* the side arrows eat the photograph on a phone — drop to the bottom bar */
+  .lightbox__nav { width: 44px; height: 44px; font-size: 24px; top: auto; bottom: 16px; transform: none; }
+  .lightbox__nav--prev { left: 16px; }
+  .lightbox__nav--next { right: 16px; }
+  .lightbox__bar { bottom: 28px; }
+  .lightbox img { max-height: 70vh; }
+}
+@media (max-width: 600px) {
+  .lightbox__hint { display: none; }
+}

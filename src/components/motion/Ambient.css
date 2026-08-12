@@ -116,3 +116,50 @@
 .ambient__sparkles span:nth-child(6) { left: 88%; top: 52%; animation-duration: 5.6s; animation-delay: 0.8s; }
 .ambient__sparkles span:nth-child(7) { left: 18%; top: 58%; animation-duration: 4.9s; animation-delay: 2.1s; }
 .ambient__sparkles span:nth-child(8) { left: 62%; top: 28%; animation-duration: 5.4s; animation-delay: 1.5s; }
+
+/* ============ MOBILE BUDGET ============
+   This layer is mounted in roughly eight sections of the home page alone. On a
+   phone that is ~24 spans carrying `filter: blur()` *and* `mix-blend-mode`
+   while an ancestor animates a transform — every frame re-rasterises the blur
+   and re-composites the backdrop beneath it, which is precisely the 12x scroll
+   regression measured on this page before.
+
+   Small screens keep the light, but painted rather than filtered: the gradient
+   stops are pre-feathered, so it reads the same without a per-frame blur. The
+   fog (a 30px blur across a drifting plane) and the sway are dropped outright. */
+@media (max-width: 900px), (pointer: coarse) {
+  .ambient__rays {
+    animation: none;
+    transform: rotate(-2deg);
+  }
+  .ambient__rays span {
+    filter: none;
+    mix-blend-mode: normal;
+    animation: none;
+    opacity: 0.75;
+  }
+  /* feathered edges replace the blur that used to soften them */
+  .ambient--gold .ambient__rays span {
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(var(--accent-rgb), 0.1) 26%,
+      rgba(var(--accent-rgb), 0.06) 58%,
+      transparent 100%
+    );
+  }
+  .ambient--dark .ambient__rays span {
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(var(--accent-light-rgb), 0.12) 26%,
+      rgba(var(--accent-light-rgb), 0.05) 58%,
+      transparent 100%
+    );
+  }
+  .ambient__fog { display: none; }
+  /* keep a few motes for life; drop the rest and their glow shadows */
+  .ambient__dust span { box-shadow: none; }
+  .ambient__dust span:nth-child(n + 7) { display: none; }
+  .ambient__sparkles span:nth-child(n + 5) { display: none; }
+}

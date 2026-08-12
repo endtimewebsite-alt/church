@@ -9,7 +9,24 @@ import p8 from '../assets/images/posters/WhatsApp Image 2026-07-23 at 16.23.41 (
 import p9 from '../assets/images/posters/WhatsApp Image 2026-07-23 at 16.23.42.jpeg'
 import p10 from '../assets/images/posters/WhatsApp Image 2026-07-23 at 16.51.15.jpeg'
 
+// ── August 2026 batch ──
+// Titles and tags below are read off the posters themselves, so the page says
+// what each flyer actually announces rather than a generic label.
+import p11 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.08.jpeg'
+import p12 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.06 (2).jpeg'
+import p13 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.06 (1).jpeg'
+import p14 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.09.jpeg'
+import p15 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.08 (1).jpeg'
+import p16 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.06.jpeg'
+
 export const brochurePosters = [
+  { id: 'poster-11', src: p11, title: 'Season to Roar and Soar — Ministering in Dubai', tag: 'Dubai · Nov 2025' },
+  { id: 'poster-12', src: p12, title: 'Holy Spirit Wind in Malaysia', tag: 'Malaysia · 7–15 Feb 2026' },
+  { id: 'poster-13', src: p13, title: 'Revival Fire — Malaysia Schedule', tag: 'Malaysia Tour · Feb 2026' },
+  { id: 'poster-14', src: p14, title: 'Prophetic Night — Destiny C3, Shah Alam', tag: 'Malaysia · 13 Feb 2026' },
+  { id: 'poster-15', src: p15, title: 'Sunday Service — Destiny C3 Tamil Church', tag: 'Malaysia · 15 Feb 2026' },
+  { id: 'poster-16', src: p16, title: 'Young Pastors Fellowship — Leaders Conference', tag: 'Tirupur · 20 Feb 2026' },
+
   { id: 'poster-1', src: p1, title: 'Prophetic Crusade & Deliverance', tag: 'International Ministry' },
   { id: 'poster-2', src: p2, title: 'Kingdom Impartation Conference', tag: 'Prophetic Gathering' },
   { id: 'poster-3', src: p3, title: 'Healing & Miracle Service', tag: 'Outreach & Healing' },
@@ -19,5 +36,5 @@ export const brochurePosters = [
   { id: 'poster-7', src: p7, title: 'Special Deliverance Gathering', tag: 'Miracle Service' },
   { id: 'poster-8', src: p8, title: 'Prophetic Voice of Restoration', tag: 'Spiritual Awakening' },
   { id: 'poster-9', src: p9, title: 'Breakthrough & Blessing Service', tag: 'Faith & Deliverance' },
-  { id: 'poster-10', src: p10, title: 'Official Ministry Brochure Flyer', tag: 'Ministry Overview' }
+  { id: 'poster-10', src: p10, title: 'Official Ministry Brochure Flyer', tag: 'Ministry Overview' },
 ]
