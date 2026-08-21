@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Ambient from './motion/Ambient'
+import FlyImage from './motion/FlyImage'
 import Ornament from './motion/Ornament'
 import { giving } from '../data/siteContent'
 import qrImage from '../assets/images/site/qr-code.jpg'
@@ -80,20 +81,22 @@ function Giving({ chapter = 'IX' }) {
     <section className="section section-soft hgiving section-scripture-bg" data-chapter={chapter} data-chapter-label="Giving">
       <Ambient rays dust tone="gold" />
       <div className="container give-container">
-        <div className="section-head give-head">
-          <div className="give-head__portrait" aria-hidden="true">
-            <img src={portraitImage} alt="" width="140" height="140" loading="lazy" />
+        <div className="give-intro-grid">
+          <div className="give-intro-figure">
+            <FlyImage className="give-intro-frame" src={portraitImage} alt="Partner with us" from="left" speed={78} />
           </div>
-          <span className="eyebrow eyebrow--center">
-            <em className="chapter">{chapter}</em> Support the Ministry
-          </span>
-          <h2 className="give-head__title">
-            PARTNER <span className="give-head__title-em">with us</span>
-          </h2>
-          <Ornament center />
-          <p className="give-head__lede">
-            Your seed helps us take the <em>prophetic voice</em> across the nations.
-          </p>
+          <div className="section-head give-head give-head--left">
+            <span className="eyebrow">
+              <em className="chapter">{chapter}</em> Support the Ministry
+            </span>
+            <h2 className="give-head__title">
+              PARTNER <span className="give-head__title-em">with us</span>
+            </h2>
+            <Ornament center={false} />
+            <p className="give-head__lede">
+              Your seed helps us take the <em>prophetic voice</em> across the nations.
+            </p>
+          </div>
         </div>
 
         <div className="give-grid">

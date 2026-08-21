@@ -1110,8 +1110,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .hconference__info {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 40px;
   backdrop-filter: blur(12px);
@@ -1126,7 +1126,7 @@
   font-family: var(--font-display);
   font-size: clamp(20px, 2.4vw, 28px);
   font-style: italic;
-  color: var(--gold-light);
+  color: var(--gold-deep);
   line-height: 1.4;
 }
 .hconference__verse {
@@ -1141,7 +1141,7 @@
 .hconference__countdown {
   margin: 0 0 32px;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .hconference__meta-grid {
   display: grid;
@@ -1149,7 +1149,7 @@
   gap: 24px;
   margin-bottom: 36px;
   padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .hconference__meta-item {
   display: flex;
@@ -1177,7 +1177,7 @@
 .hconference__meta-val {
   font-size: 15px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--ink);
   margin-top: 2px;
 }
 .hconference__meta-sub {
@@ -1188,7 +1188,7 @@
 .hconference__highlights h3 {
   font-size: 18px;
   margin-bottom: 16px;
-  color: var(--white);
+  color: var(--ink);
 }
 .hconference__highlights ul {
   list-style: none;
@@ -1213,7 +1213,7 @@
   font-size: 12px;
 }
 .hconference__highlights li strong {
-  color: var(--white);
+  color: var(--ink);
 }
 .hconference__actions {
   display: flex;

@@ -16,7 +16,6 @@ import Cinema from '../components/motion/Cinema'
 import FlyImage from '../components/motion/FlyImage'
 import Drift from '../components/motion/Drift'
 import Magnetic from '../components/motion/Magnetic'
-import ChapterRail from '../components/ChapterRail'
 import Colonnade from '../components/Colonnade'
 import GalleryTraverse from '../components/GalleryTraverse'
 import SectionHeading from '../components/SectionHeading'
@@ -49,8 +48,7 @@ function Home() {
         {/* the air of the basilica — held over the entire journey */}
         <Cinema />
         {/* where you are in the pilgrimage */}
-        <ChapterRail />
-
+        
         {/* ═══════════════ HERO — THE NAVE ═══════════════ */}
         <CathedralHero />
 
@@ -68,7 +66,7 @@ function Home() {
           <div className="container hprophet__grid">
             <div className="hprophet__figure">
               <FlyImage
-                className="hprophet__frame arch"
+                className="hprophet__frame"
                 src={founderImg}
                 alt="Prophet Daniel Bennet"
                 from="left"
@@ -197,7 +195,7 @@ function Home() {
         </section>
 
         {/* ═══════════════ UPCOMING CONFERENCE ═══════════════ */}
-        <section className="section section-soft hconference section-scripture-bg" data-chapter="VII" data-chapter-label="Upcoming Event">
+        <section className="section hconference" data-chapter="VII" data-chapter-label="Upcoming Event">
           <Ambient rays dust tone="gold" />
           <div className="container" style={{ position: 'relative', zIndex: 10 }}>
             <SectionHeading
