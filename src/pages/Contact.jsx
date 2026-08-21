@@ -168,10 +168,10 @@ function Contact() {
               </Reveal>
             </div>
           </div>
+          
+          {/* ═══════════════ GIVING / PAYMENT ═══════════════ */}
+          <Giving chapter="IX" />
         </section>
-
-        {/* ═══════════════ GIVING / PAYMENT ═══════════════ */}
-        <Giving chapter="IX" />
       </div>
     </>
   )
