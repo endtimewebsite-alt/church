@@ -23,7 +23,7 @@
 .invite-banner__bg {
   position: absolute;
   inset: 0;
-  background: url('../assets/images/site/hero-stained-glass.jpg') center 34% / cover no-repeat;
+  background: url('../assets/images/site/cathedral-nave-light.jpg') center 40% / cover no-repeat;
   transform: scale(1.06);
 }
 .invite-banner__scrim {
@@ -56,7 +56,7 @@
   padding: clamp(48px, 6vw, 88px) 0 clamp(90px, 11vw, 150px);
   background:
     linear-gradient(180deg, rgba(240, 226, 205, 0.78), rgba(218, 200, 175, 0.88)),
-    url('../assets/images/site/parchment-bg.jpg') center / cover fixed no-repeat;
+    url('../assets/images/site/prophet-new-png.jpg') center / cover fixed no-repeat;
   border-top: 1px solid rgba(184, 134, 11, 0.5);
   /* a broad arch threshold at the top edge */
   border-radius: 50% 50% 0 0 / 70px 70px 0 0;

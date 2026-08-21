@@ -5,6 +5,8 @@ import Ornament from './motion/Ornament'
 import { giving } from '../data/siteContent'
 import qrImage from '../assets/images/site/qr-code.jpg'
 import portraitImage from '../assets/images/site/partner-portrait.jpeg'
+import gpayLogo from '../assets/images/site/gpay.png'
+import phonepeLogo from '../assets/images/site/phonepe.svg'
 import './Giving.css'
 
 /**
@@ -63,7 +65,7 @@ function CopyRow({ label, value, feature, highlight, mono, wide }) {
 
 function AccountPanel({ account }) {
   return (
-    <div className="card card--stone give-card">
+    <div className="card give-card">
       <span className="eyebrow give-card__eyebrow">{account.eyebrow}</span>
       <h3 className="give-card__title">{account.title}</h3>
       <p className="give-card__note">{account.note}</p>
@@ -78,7 +80,7 @@ function AccountPanel({ account }) {
 
 function Giving({ chapter = 'IX' }) {
   return (
-    <section className="section section-soft hgiving section-scripture-bg" data-chapter={chapter} data-chapter-label="Giving">
+    <section className="section hgiving" data-chapter={chapter} data-chapter-label="Giving">
       <Ambient rays dust tone="gold" />
       <div className="container give-container">
         <div className="give-intro-grid">
@@ -93,7 +95,7 @@ function Giving({ chapter = 'IX' }) {
               PARTNER <span className="give-head__title-em">with us</span>
             </h2>
             <Ornament center={false} />
-            <p className="give-head__lede">
+            <p className="give-head__lede" style={{ textTransform: 'uppercase' }}>
               Your seed helps us take the <em>prophetic voice</em> across the nations.
             </p>
           </div>
@@ -104,17 +106,18 @@ function Giving({ chapter = 'IX' }) {
             <AccountPanel key={account.id} account={account} />
           ))}
 
-          <div className="card card--stone give-card give-card--digital">
+          <div className="card give-card give-card--digital">
             <span className="eyebrow give-card__eyebrow">Digital Giving</span>
-            <h3 className="give-card__title">G-Pay &amp; UPI</h3>
-            <p className="give-card__note">Scan the code, or send to the G-Pay number below.</p>
+            <h3 className="give-card__title">UPI</h3>
+            <p className="give-card__note">Scan the code to give via any UPI app.</p>
 
             <div className="give-qr">
               <img src={qrImage} alt="UPI QR code for giving to End Time Prophetic Ministries" width="220" height="220" loading="lazy" />
             </div>
 
-            <div className="give-card__rows give-card__rows--digital">
-              <CopyRow label="G-Pay" value={giving.gpay} highlight wide />
+            <div className="give-card__logos">
+              <img src={gpayLogo} alt="Google Pay" className="give-app-logo" />
+              <img src={phonepeLogo} alt="PhonePe" className="give-app-logo" />
             </div>
           </div>
         </div>

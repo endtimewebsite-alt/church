@@ -97,8 +97,8 @@
 body {
   margin: 0;
   position: relative;
-  /* Parchment background image — the golden-brown aged manuscript look */
-  background: var(--bg) url('./assets/images/site/parchment-bg.jpg') center / cover fixed;
+  /* Background image used in section one */
+  background: var(--bg) url('./assets/images/site/prophet-new-png.jpg') center / cover fixed no-repeat;
 }
 
 /* `background-attachment: fixed` cannot be composited: the browser repaints the

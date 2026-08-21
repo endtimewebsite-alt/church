@@ -125,6 +125,10 @@
 
 /* the marks themselves are styled in SocialIcons.css — the footer only places them */
 .site-footer__social { margin-top: 26px; }
+.site-footer__social .socials__mark {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
 
 .site-footer__address {
   display: flex;
