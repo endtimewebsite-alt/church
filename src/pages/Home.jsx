@@ -76,7 +76,6 @@ function Home() {
               </FlyImage>
             </div>
             <Drift className="hprophet__text" speed={54} lateral={16}>
-              <span className="eyebrow"><em className="chapter">I</em> The Messenger</span>
               <h2>A VESSEL RAISED FOR THE END-TIME HARVEST</h2>
               <p>{aboutUs.founderStory[0]}</p>
               <p>{aboutUs.founderStory[1]}</p>
@@ -90,7 +89,6 @@ function Home() {
           <Ambient rays dust tone="dark" />
           <div className="container">
             <Drift className="hscripture__inner" speed={64} fade={false}>
-              <span className="eyebrow hscripture__chapter"><em className="chapter">II</em> The Word</span>
               <Ornament center={false} small />
               <blockquote className="hscripture__verse">
                 For the earth shall be filled with the knowledge of the
@@ -107,7 +105,6 @@ function Home() {
         <section className="section hglobal" data-chapter="III" data-chapter-label="The Mission">
           <div className="container hglobal__grid">
             <Drift className="hglobal__text" speed={48} lateral={-18}>
-              <span className="eyebrow"><em className="chapter">III</em> The Mission</span>
               <h2>CARRYING THE PROPHETIC VOICE ACROSS THE NATIONS</h2>
               <p className="lede">
                 From local outreach to international crusades, the Gospel and the
@@ -147,7 +144,7 @@ function Home() {
         <section className="section section-soft hmin section-scripture-bg" data-chapter="IV" data-chapter-label="The Work">
           <Ambient rays dust tone="dark" />
           <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-            <SectionHeading eyebrow={<><em className="chapter">IV</em> The Work</>} title="Halls of Ministry">
+            <SectionHeading title="Halls of Ministry">
               Serving the body of Christ through prayer, teaching, outreach and discipleship.
             </SectionHeading>
           </div>
@@ -158,7 +155,7 @@ function Home() {
         {/* ═══════════════ TESTIMONIES ═══════════════ */}
         <section className="section htest" data-chapter="V" data-chapter-label="The Witness">
           <div className="container">
-            <SectionHeading eyebrow={<><em className="chapter">V</em> The Witness</>} title="Lives Transformed by His Presence" />
+            <SectionHeading title="Lives Transformed by His Presence" />
             <Reveal className="htest__marquee">
               <div
                 className="htest__marquee-track"
@@ -189,7 +186,7 @@ function Home() {
         <section className="section section-soft hgal section-scripture-bg" data-chapter="VI" data-chapter-label="Remembrance">
           <Ambient rays dust tone="dark" />
           <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-            <SectionHeading eyebrow={<><em className="chapter">VI</em> Remembrance</>} title="From the Meetings" />
+            <SectionHeading title="From the Meetings" />
           </div>
           <GalleryTraverse images={previewImages} />
         </section>
@@ -199,7 +196,6 @@ function Home() {
           <Ambient rays dust tone="gold" />
           <div className="container" style={{ position: 'relative', zIndex: 10 }}>
             <SectionHeading
-              eyebrow={<><em className="chapter">VII</em> Upcoming Event</>}
               title="Prophetic Misphacha Conference 2026"
             >
               Rebuilding Christ-Centered Healthy Families &amp; Restoring Marriages
@@ -344,7 +340,6 @@ function Home() {
           <Ambient rays dust fog tone="dark" />
           <div className="container">
             <Reveal variant="blur" className="hprayer__inner">
-              <span className="eyebrow eyebrow--center"><em className="chapter">VIII</em> The Invitation</span>
               <h2>INVITE PROPHET DANIEL BENNET<br />TO YOUR CHURCH OR CONFERENCE TO SPEAK</h2>
               <Ornament center />
               <p>{aboutUs.founderStory[2]}</p>

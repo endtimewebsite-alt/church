@@ -15,11 +15,17 @@
  * ─────────────────────────────────────────────────────────────────────────
  */
 
-const fulls = import.meta.glob('../assets/images/section*/*.{jpg,jpeg,JPG,JPEG}', {
+const fulls = import.meta.glob([
+  '../assets/images/section*/*.{jpg,jpeg,JPG,JPEG}',
+  '../assets/images/international/*.{jpg,jpeg,JPG,JPEG}'
+], {
   eager: true,
   import: 'default',
 })
-const thumbs = import.meta.glob('../assets/images/section*/thumbs/*.jpg', {
+const thumbs = import.meta.glob([
+  '../assets/images/section*/thumbs/*.jpg',
+  '../assets/images/international/thumbs/*.jpg'
+], {
   eager: true,
   import: 'default',
 })
@@ -60,11 +66,30 @@ export const categoryMeta = [
     label: 'Church Visits',
     blurb: 'Ministering alongside local pastors in the churches that opened their doors.',
   },
+  // To add a new category, create a folder named 'section8' in 'src/assets/images/'
+  // and add your images there (along with a 'thumbs' folder for thumbnails), then uncomment and edit this block:
+  {
+    id: 'section8',
+    label: 'Latest Meetings',
+    blurb: 'Recent gatherings and church meetings.',
+  },
+  {
+    id: 'international',
+    label: 'International',
+    blurb: 'Ministry meetings held internationally.',
+  },
+  /*
+  {
+    id: 'section9',
+    label: 'Category 9 Name',
+    blurb: 'Description for category 9.',
+  },
+  */
 ]
 
 /** 'section3' out of '../assets/images/section3/thumbs/04.jpg' */
 function sectionOf(path) {
-  const m = path.match(/\/(section\d+)\//)
+  const m = path.match(/\/(section\d+|international)\//)
   return m ? m[1] : null
 }
 

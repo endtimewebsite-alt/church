@@ -7,6 +7,8 @@ import qrImage from '../assets/images/site/qr-code.jpg'
 import portraitImage from '../assets/images/site/partner-portrait.jpeg'
 import gpayLogo from '../assets/images/site/gpay.png'
 import phonepeLogo from '../assets/images/site/phonepe.svg'
+import paytmLogo from '../assets/images/site/paytm.svg'
+import upiLogo from '../assets/images/site/upi.png'
 import './Giving.css'
 
 /**
@@ -88,9 +90,6 @@ function Giving({ chapter = 'IX' }) {
             <FlyImage className="give-intro-frame" src={portraitImage} alt="Partner with us" from="left" speed={78} />
           </div>
           <div className="section-head give-head give-head--left">
-            <span className="eyebrow">
-              <em className="chapter">{chapter}</em> Support the Ministry
-            </span>
             <h2 className="give-head__title">
               PARTNER <span className="give-head__title-em">with us</span>
             </h2>
@@ -118,12 +117,15 @@ function Giving({ chapter = 'IX' }) {
             <div className="give-card__logos">
               <img src={gpayLogo} alt="Google Pay" className="give-app-logo" />
               <img src={phonepeLogo} alt="PhonePe" className="give-app-logo" />
+              <img src={paytmLogo} alt="Paytm" className="give-app-logo" style={{ transform: 'scale(1.2)' }} />
+              <img src={upiLogo} alt="Other UPI Apps" className="give-app-logo" style={{ transform: 'scale(1.3)' }} />
             </div>
           </div>
         </div>
 
         <p className="give-footnote">
-          Please mention your name and purpose in the transfer remarks so the offering can be acknowledged.
+          Please mention your name and purpose in the transfer remarks so the offering can be acknowledged.<br/>
+          Kindly send your Transaction details to this WhatsApp number: <strong>9342523393</strong>
         </p>
       </div>
     </section>
