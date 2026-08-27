@@ -77,7 +77,7 @@ function Contact() {
           <Ambient rays dust tone="dark" />
           <div className="container fbanner__inner">
             <span className="eyebrow eyebrow--center">Contact</span>
-            <h1>Get in Touch</h1>
+            <h1>Get in Touch With Us</h1>
             <Ornament center />
           </div>
         </section>
