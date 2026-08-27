@@ -131,8 +131,10 @@ function Giving({ chapter = 'IX' }) {
         </div>
 
         <p className="give-footnote">
-          Please mention your name and purpose in the transfer remarks so the offering can be acknowledged.<br/>
-          Kindly send your Transaction details to this WhatsApp number: <strong>9342523393</strong>
+          <strong>
+            Please mention your name and purpose in the transfer remarks so the offering can be acknowledged.<br/>
+            Kindly send your Transaction details to this WhatsApp number: 9342523393
+          </strong>
         </p>
       </div>
     </section>
