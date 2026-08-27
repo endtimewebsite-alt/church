@@ -95,34 +95,31 @@
 .chero__title {
   position: relative;
   z-index: 10;
-  display: inline-flex;
-  flex-direction: column;
-  width: min-content; /* Dictated entirely by ENCOUNTER */
-  max-width: 100%;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3em;
   color: var(--white);
   font-weight: 500;
+  margin: 0;
+  font-family: var(--font-display);
   text-transform: uppercase;
   line-height: 0.98;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 20px 80px rgba(0, 0, 0, 0.9); /* Increased contrast */
 }
 /* ENCOUNTER: slightly larger size with tight, natural letter spacing */
 .chero__word--1 {
-  display: block;
   font-size: clamp(30px, 4.6vw, 70px);
   font-weight: 500;
   letter-spacing: 0.025em;
   white-space: nowrap;
 }
-/* CHRIST: highlighted 24K gold display title */
+/* GOD: highlighted 24K gold display title */
 .chero__word--2 {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* Stretches to fill the min-content width set by ENCOUNTER */
-  font-size: clamp(52px, 8vw, 120px); /* Slightly smaller so it's guaranteed not to overflow and force the width out */
-  font-weight: 600;
-  letter-spacing: 0;
-  margin-top: -0.05em; /* Tighter vertical stack */
-  margin-left: 0; /* Strict mathematical alignment on the left */
+  font-size: clamp(30px, 4.6vw, 70px); /* Match ENCOUNTER size */
+  font-weight: 500; /* Match ENCOUNTER weight */
+  letter-spacing: 0.025em; /* Match ENCOUNTER spacing */
+  margin-left: 0;
   white-space: nowrap;
 }
 .chero__title .accent {

@@ -20,7 +20,7 @@ import p15 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.08 
 import p16 from '../assets/images/posters/WhatsApp Image 2026-08-05 at 23.21.06.jpeg'
 import p17 from '../assets/images/posters/WhatsApp Image 2026-08-15 at 20.11.12.jpeg'
 import p18 from '../assets/images/posters/WhatsApp Image 2026-08-15 at 20.15.21.jpeg'
-import p19 from '../assets/images/posters/prophetic-misphacha-conference.jpg'
+import p19 from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
 
 export const brochurePosters = [
   { id: 'poster-11', src: p11, title: 'Season to Roar and Soar — Ministering in Dubai', tag: 'Dubai · Nov 2025' },

@@ -6,7 +6,7 @@ import founderImg from '../assets/images/site/prophet-messenger.jpeg'
 import outreachImg from '../assets/images/site/outreach.jpg'
 import internationalImg from '../assets/images/site/international.jpg'
 import malaysiaImg from '../assets/images/site/malaysia-outreach.jpg'
-import conferencePosterImg from '../assets/images/posters/prophetic-misphacha-conference.jpg'
+import conferencePosterImg from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
 import { site, aboutUs, ministries, stats, testimonials, events } from '../data/siteContent'
 import { categories } from '../data/gallery'
 import Reveal from '../components/motion/Reveal'
@@ -38,9 +38,9 @@ function Home() {
 
   return (
     <>
-      <title>{site.name} | Encounter Christ</title>
+      <title>{site.name} | Encounter God</title>
       <meta name="description" content="A prophetic ministry taking the presence of God to the nations — teaching, healing and revival with Prophet Daniel Bennet." />
-      <meta property="og:title" content={`${site.name} | Encounter Christ`} />
+      <meta property="og:title" content={`${site.name} | Encounter God`} />
       <meta property="og:description" content="A prophetic ministry taking the presence of God to the nations — teaching, healing and revival." />
       <meta property="og:type" content="website" />
 

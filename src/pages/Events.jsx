@@ -10,7 +10,7 @@ import Countdown from '../components/Countdown'
 import Arrow from '../components/Arrow'
 import HeroLogo from '../components/HeroLogo'
 import Lightbox from '../components/Lightbox'
-import conferencePosterImg from '../assets/images/posters/prophetic-misphacha-conference.jpg'
+import conferencePosterImg from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
 import './Forms.css'
 import './Events.css'
 

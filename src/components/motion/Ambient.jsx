@@ -17,14 +17,14 @@ function Ambient({ rays = true, dust = true, fog = false, sparkles = false, tone
         </div>
       )}
       {fog && <div className="ambient__fog" />}
-      {dust && (
+      {dust && tone !== 'dark' && (
         <div className="ambient__dust">
           {Array.from({ length: 14 }).map((_, i) => (
             <span key={i} />
           ))}
         </div>
       )}
-      {sparkles && (
+      {sparkles && tone !== 'dark' && (
         <div className="ambient__sparkles">
           {Array.from({ length: 8 }).map((_, i) => (
             <span key={i} />

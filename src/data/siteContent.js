@@ -11,7 +11,7 @@ export const site = {
   address: 'Porur, Chennai, Tamil Nadu, India',
   social: {
     // TODO(client): replace with the exact URL of the "ETPM Chennai" Facebook page.
-    facebook: 'https://www.facebook.com/p/End-Time-Prophetic-Ministries-100085716934064/',
+    facebook: 'https://www.facebook.com/share/1GhU6CFh8y/',
     instagram: 'https://www.instagram.com/endtimepropheticministries/',
     youtube: 'https://www.youtube.com/@endtimepropheticministries6864',
     whatsapp: 'https://wa.me/919342523393',

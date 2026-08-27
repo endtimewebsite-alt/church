@@ -90,23 +90,7 @@ function Cinema({ embers = 26 }) {
         style={{ opacity: streakOpacity, scaleY: streakScale }}
       />
 
-      {/* gilded embers rising continuously through the whole page */}
-      <span className="cinema__embers">
-        {motes.map((m, i) => (
-          <span
-            key={i}
-            style={{
-              left: `${m.left}%`,
-              width: `${m.size}px`,
-              height: `${m.size}px`,
-              opacity: m.opacity,
-              animationDuration: `${m.duration}s`,
-              animationDelay: `${m.delay}s`,
-              '--sway': `${m.sway}px`,
-            }}
-          />
-        ))}
-      </span>
+
 
       {/* the light being carried through the halls */}
       <motion.span className="cinema__candle" style={{ x: candleX, y: candleY }} />

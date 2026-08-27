@@ -4,11 +4,11 @@ import FlyImage from './motion/FlyImage'
 import Ornament from './motion/Ornament'
 import { giving } from '../data/siteContent'
 import qrImage from '../assets/images/site/qr-code.jpg'
-import portraitImage from '../assets/images/site/partner-portrait.jpeg'
-import gpayLogo from '../assets/images/site/gpay.png'
-import phonepeLogo from '../assets/images/site/phonepe.svg'
-import paytmLogo from '../assets/images/site/paytm.svg'
-import upiLogo from '../assets/images/site/upi.png'
+import portraitImage from '../assets/images/site/WhatsApp Image 2026-08-26 at 19.16.03.jpeg'
+import gpayLogo from '../assets/images/site/google-pay-1.svg'
+import phonepeLogo from '../assets/images/site/phonepe-app.svg'
+import paytmLogo from '../assets/images/site/paytm-app.svg'
+import upiLogo from '../assets/images/site/upi-new.svg'
 import './Giving.css'
 
 /**
@@ -95,7 +95,14 @@ function Giving({ chapter = 'IX' }) {
             </h2>
             <Ornament center={false} />
             <p className="give-head__lede" style={{ textTransform: 'uppercase' }}>
-              Your seed helps us take the <em>prophetic voice</em> across the nations.
+              Your seed helps us take the <em>prophetic voice</em> across the nations.<br/>
+              <span style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+                <img src="https://flagcdn.com/in.svg" width="28" alt="India" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/my.svg" width="28" alt="Malaysia" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/sg.svg" width="28" alt="Singapore" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/lk.svg" width="28" alt="Sri Lanka" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/ae.svg" width="28" alt="United Arab Emirates" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+              </span>
             </p>
           </div>
         </div>
@@ -117,8 +124,8 @@ function Giving({ chapter = 'IX' }) {
             <div className="give-card__logos">
               <img src={gpayLogo} alt="Google Pay" className="give-app-logo" />
               <img src={phonepeLogo} alt="PhonePe" className="give-app-logo" />
-              <img src={paytmLogo} alt="Paytm" className="give-app-logo" style={{ transform: 'scale(1.2)' }} />
-              <img src={upiLogo} alt="Other UPI Apps" className="give-app-logo" style={{ transform: 'scale(1.3)' }} />
+              <img src={paytmLogo} alt="Paytm" className="give-app-logo" />
+              <img src={upiLogo} alt="Other UPI Apps" className="give-app-logo" />
             </div>
           </div>
         </div>

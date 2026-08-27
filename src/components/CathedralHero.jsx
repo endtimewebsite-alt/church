@@ -112,14 +112,10 @@ function CathedralHero() {
             <h1 className="chero__title">
               <motion.span className="chero__word chero__word--1" variants={reduce ? undefined : word}>Encounter</motion.span>
               <motion.span className="chero__word chero__word--2 accent" variants={reduce ? undefined : word}>
-                <span>C</span><span>H</span><span>R</span><span>I</span><span>S</span><span>T</span>
+                GOD
               </motion.span>
             </h1>
 
-            <motion.div className="chero__meta" variants={reduce ? undefined : word}>
-              <span className="chero__meta-line" aria-hidden="true" />
-              <span className="chero__ref">ISAIAH 11 : 3</span>
-            </motion.div>
 
             <motion.div className="chero__features" variants={reduce ? undefined : word}>
               <div className="chero__feature">

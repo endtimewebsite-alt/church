@@ -123,7 +123,7 @@ function Overture({ onDone }) {
         <img className="ov__flame-img" src={flameMark} alt="" />
         <div className="ov__title-wrap">
           <span className="ov__name">{site.name}</span>
-          <span className="ov__tagline">Encounter Christ</span>
+          <span className="ov__tagline">Encounter God</span>
         </div>
       </div>
 
