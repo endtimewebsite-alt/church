@@ -5,7 +5,7 @@
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   transition: opacity 0.3s ease, transform 0.3s ease;
   filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.4)) brightness(1.2); /* Brighter logo */
 }
@@ -46,7 +46,7 @@
   .hero-top-logo {
     top: 16px;
     left: 20px;
-    gap: 9px;
+    gap: 14px;
   }
   .hero-top-logo__mark {
     height: 42px;
