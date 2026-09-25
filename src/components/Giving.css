@@ -23,6 +23,17 @@
   max-width: 520px;
   margin: 0 auto;
 }
+/* FlyImage's frame sizes itself off `height: 100%` of this element, which is
+   never definite here (only max-width is set) — some mobile browsers resolve
+   that ambiguous percentage-height chain to 0 and the portrait disappears.
+   Pin the image's own aspect-ratio instead, same fix as .hglobal__img img. */
+.give-intro-frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 853 / 865;
+  object-fit: cover;
+  display: block;
+}
 
 .give-head--left {
   text-align: left;
