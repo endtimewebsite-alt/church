@@ -22,7 +22,13 @@ import p17 from '../assets/images/posters/WhatsApp Image 2026-08-15 at 20.11.12.
 import p18 from '../assets/images/posters/WhatsApp Image 2026-08-15 at 20.15.21.jpeg'
 import p19 from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
 
+// ── September 2026 batch ──
+import p20 from '../assets/images/posters/WhatsApp Image 2026-09-25 at 08.31.24.jpeg'
+import p21 from '../assets/images/posters/WhatsApp Image 2026-09-25 at 08.31.25.jpeg'
+
 export const brochurePosters = [
+  { id: 'poster-20', src: p20, title: 'Roar Malaysia — It’s Your Time', tag: 'Malaysia · 4–14 Oct 2026' },
+  { id: 'poster-21', src: p21, title: 'Arise Malaysia — It’s Your Time', tag: 'Malaysia · 4–14 Oct 2026' },
   { id: 'poster-11', src: p11, title: 'Season to Roar and Soar — Ministering in Dubai', tag: 'Dubai · Nov 2025' },
   { id: 'poster-12', src: p12, title: 'Holy Spirit Wind in Malaysia', tag: 'Malaysia · 7–15 Feb 2026' },
   { id: 'poster-13', src: p13, title: 'Revival Fire — Malaysia Schedule', tag: 'Malaysia Tour · Feb 2026' },

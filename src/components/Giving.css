@@ -209,6 +209,18 @@
   transform: scale(1.08);
 }
 
+.give-card__rows--centered {
+  align-items: center;
+  margin-bottom: 22px;
+}
+.give-card__rows--centered .give-row {
+  grid-template-columns: none;
+  justify-items: center;
+  border-bottom: 0;
+  padding: 0;
+  gap: 4px;
+}
+
 .give-footnote {
   margin: 40px auto 0;
   max-width: 620px;

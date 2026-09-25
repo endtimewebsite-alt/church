@@ -109,14 +109,14 @@
 }
 /* ENCOUNTER: slightly larger size with tight, natural letter spacing */
 .chero__word--1 {
-  font-size: clamp(30px, 4.6vw, 70px);
+  font-size: clamp(52px, 8vw, 120px);
   font-weight: 500;
   letter-spacing: 0.025em;
   white-space: nowrap;
 }
 /* GOD: highlighted 24K gold display title */
 .chero__word--2 {
-  font-size: clamp(30px, 4.6vw, 70px); /* Match ENCOUNTER size */
+  font-size: clamp(52px, 8vw, 120px); /* Match ENCOUNTER size */
   font-weight: 500; /* Match ENCOUNTER weight */
   letter-spacing: 0.025em; /* Match ENCOUNTER spacing */
   margin-left: 0;

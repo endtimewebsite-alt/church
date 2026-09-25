@@ -7,6 +7,7 @@ import outreachImg from '../assets/images/site/outreach.jpg'
 import internationalImg from '../assets/images/site/international.jpg'
 import malaysiaImg from '../assets/images/site/malaysia-outreach.jpg'
 import conferencePosterImg from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
+import ariseMalaysiaPosterImg from '../assets/images/posters/WhatsApp Image 2026-09-25 at 08.31.25.jpeg'
 import { site, aboutUs, ministries, stats, testimonials, events } from '../data/siteContent'
 import { categories } from '../data/gallery'
 import Reveal from '../components/motion/Reveal'
@@ -26,12 +27,59 @@ import Giving from '../components/Giving'
 import Arrow from '../components/Arrow'
 import './Home.css'
 
+/* Posters live beside the event data by id, mirroring the same map on the Events page. */
+const eventPosters = {
+  'misphacha-2026': conferencePosterImg,
+  'arise-malaysia-2026': ariseMalaysiaPosterImg,
+}
+
+function MetaCalendarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  )
+}
+function MetaClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  )
+}
+function MetaPinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
+function MetaTicketIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
+      <path d="M20 12V8H4v4M20 12v6H4v-6M20 12H4M16 6V4H8v2" />
+    </svg>
+  )
+}
+
 function Home() {
   const [posterOpen, setPosterOpen] = useState(false)
   // one frame from each category rather than the first six of one folder, so
   // the preview strip shows the range of the ministry's work
   const previewImages = categories.map((c) => c.photos[0]).filter(Boolean).slice(0, 6)
   const nextEvent = events[0]
+  const posterImg = eventPosters[nextEvent.id]
+  const eventMeta = [
+    { icon: MetaCalendarIcon, label: 'Date & Time', value: nextEvent.dateLabel, sub: nextEvent.timeLabel },
+    { icon: MetaClockIcon, label: 'Closing Date', value: nextEvent.registrationClosesLabel, sub: nextEvent.registrationClosesLabel ? 'Registration Closes Soon' : undefined },
+    { icon: MetaPinIcon, label: 'Venue', value: nextEvent.venue, sub: nextEvent.venueAddress },
+    { icon: MetaTicketIcon, label: 'Registration', value: nextEvent.fee, sub: nextEvent.seats },
+  ].filter((m) => m.value)
 
   // doubled so the track can loop seamlessly from -50% back to 0
   const witnessReel = [...testimonials, ...testimonials]
@@ -196,9 +244,9 @@ function Home() {
           <Ambient rays dust tone="gold" />
           <div className="container" style={{ position: 'relative', zIndex: 10 }}>
             <SectionHeading
-              title="Prophetic Misphacha Conference 2026"
+              title={nextEvent.title}
             >
-              Rebuilding Christ-Centered Healthy Families &amp; Restoring Marriages
+              {nextEvent.theme}
             </SectionHeading>
 
             <div className="hconference__grid">
@@ -206,8 +254,8 @@ function Home() {
               <div className="hconference__poster-wrapper">
                 <div className="hconference__poster-card" onClick={() => setPosterOpen(true)}>
                   <img
-                    src={conferencePosterImg}
-                    alt="Prophetic Misphacha Conference Poster - Prophet Daniel Bennet"
+                    src={posterImg}
+                    alt={`${nextEvent.title} Poster - Prophet Daniel Bennet`}
                     className="hconference__poster-img"
                   />
                   <div className="hconference__poster-overlay">
@@ -219,7 +267,7 @@ function Home() {
                       Click to Expand Poster
                     </span>
                   </div>
-                  <span className="hconference__badge">22 Aug 2026</span>
+                  <span className="hconference__badge">{nextEvent.dateLabel}</span>
                 </div>
               </div>
 
@@ -231,77 +279,37 @@ function Home() {
                 </div>
 
                 <div className="hconference__countdown">
-                  <Countdown target={nextEvent.start} label="Conference begins in" endedLabel="The conference has begun" />
+                  <Countdown target={nextEvent.start} label="Begins in" endedLabel="The gathering has begun" />
                 </div>
 
                 <div className="hconference__meta-grid">
-                  <div className="hconference__meta-item">
-                    <div className="hconference__meta-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                        <line x1="16" y1="2" x2="16" y2="6" />
-                        <line x1="8" y1="2" x2="8" y2="6" />
-                        <line x1="3" y1="10" x2="21" y2="10" />
-                      </svg>
+                  {eventMeta.map((m) => (
+                    <div className="hconference__meta-item" key={m.label}>
+                      <div className="hconference__meta-icon" aria-hidden="true">
+                        <m.icon />
+                      </div>
+                      <div>
+                        <div className="hconference__meta-label">{m.label}</div>
+                        <div className="hconference__meta-val">{m.value}</div>
+                        {m.sub && <div className="hconference__meta-sub">{m.sub}</div>}
+                      </div>
                     </div>
-                    <div>
-                      <div className="hconference__meta-label">Date &amp; Time</div>
-                      <div className="hconference__meta-val">22 August 2026 (Saturday)</div>
-                      <div className="hconference__meta-sub">9:30 AM – 1:00 PM</div>
-                    </div>
-                  </div>
-
-                  <div className="hconference__meta-item">
-                    <div className="hconference__meta-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="hconference__meta-label">Closing Date</div>
-                      <div className="hconference__meta-val">15 August 2026</div>
-                      <div className="hconference__meta-sub">Registration Closes Soon</div>
-                    </div>
-                  </div>
-
-                  <div className="hconference__meta-item">
-                    <div className="hconference__meta-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="hconference__meta-label">Venue</div>
-                      <div className="hconference__meta-val">STEVE’S GYM</div>
-                      <div className="hconference__meta-sub">No. 10, Krishna Reddy, Henpur Bagalur Road, HBR 3rd Block, Bengaluru - 500043</div>
-                    </div>
-                  </div>
-
-                  <div className="hconference__meta-item">
-                    <div className="hconference__meta-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold)" strokeWidth="1.8">
-                        <path d="M20 12V8H4v4M20 12v6H4v-6M20 12H4M16 6V4H8v2" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="hconference__meta-label">Registration</div>
-                      <div className="hconference__meta-val">₹200/- per person</div>
-                      <div className="hconference__meta-sub">Limited Seats (30 Seats Only)</div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="hconference__highlights">
-                  <h3>Conference Focus &amp; Sessions</h3>
-                  <ul>
-                    <li><strong>Rebuilding Christ-Centered Healthy Families</strong> — Newly married couples are welcome</li>
-                    <li><strong>Forgiveness &amp; Healing</strong> in marriage</li>
-                    <li><strong>Dealing with Modern Challenges</strong> — Technology, peer pressure, and cultural influences</li>
-                    <li><strong>Restoring Love, Faith, &amp; Unity</strong> in marriage</li>
-                  </ul>
-                </div>
+                {nextEvent.sessions?.length > 0 && (
+                  <div className="hconference__highlights">
+                    <h3>Conference Focus &amp; Sessions</h3>
+                    <ul>
+                      {nextEvent.sessions.map((s) => (
+                        <li key={s.title}>
+                          <strong>{s.title}</strong>
+                          {s.note && <> — {s.note}</>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="hconference__actions">
                   <Magnetic>
@@ -327,8 +335,8 @@ function Home() {
         <AnimatePresence>
           {posterOpen && (
             <Lightbox
-              src={conferencePosterImg}
-              alt="Prophetic Misphacha Conference poster"
+              src={posterImg}
+              alt={`${nextEvent.title} poster`}
               onClose={() => setPosterOpen(false)}
             />
           )}

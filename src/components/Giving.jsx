@@ -102,6 +102,11 @@ function Giving({ chapter = 'IX' }) {
                 <img src="https://flagcdn.com/sg.svg" width="28" alt="Singapore" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
                 <img src="https://flagcdn.com/lk.svg" width="28" alt="Sri Lanka" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
                 <img src="https://flagcdn.com/ae.svg" width="28" alt="United Arab Emirates" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/us.svg" width="28" alt="USA" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/gb.svg" width="28" alt="United Kingdom" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/au.svg" width="28" alt="Australia" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/ca.svg" width="28" alt="Canada" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                <img src="https://flagcdn.com/fr.svg" width="28" alt="France" style={{ borderRadius: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
               </span>
             </p>
           </div>
@@ -119,6 +124,10 @@ function Giving({ chapter = 'IX' }) {
 
             <div className="give-qr">
               <img src={qrImage} alt="UPI QR code for giving to End Time Prophetic Ministries" width="220" height="220" loading="lazy" />
+            </div>
+
+            <div className="give-card__rows give-card__rows--centered">
+              <CopyRow label="UPI No." value={giving.gpay} highlight />
             </div>
 
             <div className="give-card__logos">

@@ -11,6 +11,7 @@ import Arrow from '../components/Arrow'
 import HeroLogo from '../components/HeroLogo'
 import Lightbox from '../components/Lightbox'
 import conferencePosterImg from '../assets/images/posters/WhatsApp Image 2026-08-26 at 19.16.30.jpeg'
+import ariseMalaysiaPosterImg from '../assets/images/posters/WhatsApp Image 2026-09-25 at 08.31.25.jpeg'
 import './Forms.css'
 import './Events.css'
 
@@ -18,6 +19,7 @@ import './Events.css'
    plus one poster import rather than a new page. */
 const posters = {
   'misphacha-2026': conferencePosterImg,
+  'arise-malaysia-2026': ariseMalaysiaPosterImg,
 }
 
 function isUpcoming(event) {

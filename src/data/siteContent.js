@@ -67,6 +67,18 @@ export const giving = {
  */
 export const events = [
   {
+    id: 'arise-malaysia-2026',
+    title: 'Arise Malaysia 2026',
+    theme:
+      'A cry to restore the nation — prophetic meetings declaring a shift in the environment, the cloud, the atmosphere, the people’s life, the government, the Body of Christ, and the realm of the Spirit.',
+    scripture: '“Arise, shine; for thy light is come, and the glory of the LORD is risen upon thee.”',
+    scriptureRef: 'Isaiah 60:1',
+    start: '2026-10-04T00:00:00+05:30',
+    end: '2026-10-14T23:59:00+05:30',
+    dateLabel: '4 – 14 October 2026',
+    venue: 'Malaysia',
+  },
+  {
     id: 'misphacha-2026',
     title: 'Prophetic Misphacha Conference 2026',
     theme: 'Rebuilding Christ-Centered Healthy Families & Restoring Marriages',
